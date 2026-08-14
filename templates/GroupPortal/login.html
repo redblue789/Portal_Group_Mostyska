@@ -1,0 +1,15 @@
+{% extends 'GroupPortal/base.html' %}
+
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+    <div class="auth-box">
+        <h2>Вхід до системи</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Увійти</button>
+        </form>
+        <p>Немає акаунта? <a href="{% url 'register' %}">Зареєструватися</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'GroupPortal/base.html' %}
+
+{% block title %}Панель{% endblock %}
+
+{% block content %}
+    <h1>Ласкаво просимо, {{ user.username }}</h1>
+    <p>Ваша роль: <strong>{{ role }}</strong></p>
+    <div class="card">
+        <h3>Керування профілем</h3>
+        <p>Тут можна буде додати редагування даних профілю, оголошення, форум та інші модулі порталу.</p>
+    </div>
+{% endblock %}

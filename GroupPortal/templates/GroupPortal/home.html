@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портал групи</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: #111827;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .welcome h2 {
+            margin-bottom: 10px;
+        }
+
+        .widgets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background: #1f2937;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .widgets {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Портал групи</h1>
+    <p>Інформація, новини та події нашої групи</p>
+</header>
+
+<nav>
+    <a href="/">Головна</a>
+    <a href="#">Новини</a>
+    <a href="#">Форум</a>
+    <a href="#">Щоденник</a>
+    <a href="#">Події</a>
+</nav>
+
+<div class="container">
+
+    <section class="welcome">
+        <h2>Ласкаво просимо!</h2>
+        <p>
+            Це головна сторінка порталу нашої групи.
+            Тут буде знаходитися важлива інформація,
+            новини, події та інші корисні розділи.
+        </p>
+    </section>
+
+    <section class="widgets">
+
+        <div class="card">
+            <h3>📰 Останні новини</h3>
+            <p>Тут будуть відображатися останні новини групи.</p>
+            <a href="#" class="button">Переглянути новини</a>
+        </div>
+
+        <div class="card">
+            <h3>📅 Найближчі події</h3>
+            <p>Тут будуть показуватися найближчі події групи.</p>
+            <a href="#" class="button">Переглянути події</a>
+        </div>
+
+        <div class="card">
+            <h3>📢 Оголошення</h3>
+            <p>Важливі повідомлення та оголошення для учасників групи.</p>
+            <a href="#" class="button">Переглянути</a>
+        </div>
+
+        <div class="card">
+            <h3>📚 Матеріали</h3>
+            <p>Навчальні матеріали, файли та корисні ресурси.</p>
+            <a href="#" class="button">Переглянути матеріали</a>
+        </div>
+
+        <div class="card">
+            <h3>💬 Форум</h3>
+            <p>Спілкування між учасниками групи та обговорення.</p>
+            <a href="#" class="button">Перейти на форум</a>
+        </div>
+
+        <div class="card">
+            <h3>🗳️ Опитування</h3>
+            <p>Активні опитування та голосування групи.</p>
+            <a href="#" class="button">Переглянути опитування</a>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Портал групи</p>
+</footer>
+
+</body>
+</html>

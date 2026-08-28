@@ -1,0 +1,25 @@
+{% for item in materials %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+
+      {% if item.material_type == 'youtube' %}
+        <iframe width="560" height="315" src="{{ item.get_youtube_embed_url }}" frameborder="0" allowfullscreen></iframe>
+      
+      {% elif item.material_type == 'image' and item.image %}
+        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}">
+      
+      {% elif item.material_type == 'file' and item.file %}
+        <a href="{{ item.file.url }}" class="btn btn-primary" download>Завантажити файл</a>
+      
+      {% elif item.material_type == 'link' and item.external_link %}
+        <a href="{{ item.external_link }}" target="_blank">Перейти за посиланням</a>
+      {% endif %}
+
+      {% if user.is_staff %}
+        <a href="{% url 'material_delete' item.pk %}" class="btn btn-danger btn-sm">Видалити</a>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}

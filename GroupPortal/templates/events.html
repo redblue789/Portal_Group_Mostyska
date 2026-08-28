@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Події</title>
+</head>
+<body>
+
+    <h1>📅 Події</h1>
+
+    {% if can_manage %}
+        <a href="{% url 'event_create' %}">
+            ➕ Додати подію
+        </a>
+    {% endif %}
+
+    <hr>
+
+    {% if events %}
+
+        {% for event in events %}
+
+            <div>
+                <h2>{{ event.title }}</h2>
+
+                <p>
+                    📅 {{ event.date|date:"d.m.Y" }}
+                    🕐 {{ event.time|time:"H:i" }}
+                </p>
+
+                {% if event.description %}
+                    <p>{{ event.description }}</p>
+                {% endif %}
+
+                {% if can_manage %}
+                    <a href="{% url 'event_edit' event.id %}">
+                        ✏️ Редагувати
+                    </a>
+
+                    <a href="{% url 'event_delete' event.id %}">
+                        🗑️ Видалити
+                    </a>
+                {% endif %}
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>Подій поки немає.</p>
+
+    {% endif %}
+
+</body>
+</html>S

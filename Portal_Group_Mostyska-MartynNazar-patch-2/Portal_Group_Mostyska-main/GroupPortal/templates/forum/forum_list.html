@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум групи</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'forum/style.css' %}">
+</head>
+<body>
+    <main class="forum-page container">
+        <div class="forum-heading">
+            <div><span class="small-title">СПІЛЬНОТА</span><h1>💬 Форум групи</h1><p>Обговорюйте навчання, події та ідеї разом.</p></div>
+            {% if user.is_staff %}
+                <a href="{% url 'create_forum_topic' %}" class="primary-btn">+ Створити тему</a>
+            {% endif %}
+        </div>
+
+        <div class="topic-list">
+            {% for topic in topics %}
+                <a href="{% url 'forum_detail' topic.pk %}" class="topic-card">
+                    <div><span class="topic-mark">01</span></div>
+                    <div class="topic-copy"><h3>{{ topic.title }}</h3><p>{{ topic.description|default:"Без опису" }}</p>
+                    <div class="topic-meta"><span>👤 {{ topic.created_by.username }}</span><span>📅 {{ topic.created_at|date:"d.m.Y H:i" }}</span>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="empty-state">Тем поки немає. Створіть першу!</div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

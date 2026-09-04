@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум групи</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%); min-height: 100vh; }
+        .topic-card { border-left: 5px solid #4f46e5; transition: transform 0.2s, box-shadow 0.2s; }
+        .topic-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+        .btn-gradient { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; border: none; }
+        .btn-gradient:hover { background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%); color: white; }
+    </style>
+</head>
+<body class="py-5">
+    <div class="container bg-white p-4 p-md-5 rounded-4 shadow-lg" style="max-width: 900px;">
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+            <h1 class="fw-bold m-0 display-6" style="color: #312e81;">💬 Форум групи</h1>
+            {% if user.is_staff %}
+                <a href="{% url 'create_forum_topic' %}" class="btn btn-gradient btn-lg rounded-pill px-4 shadow-sm fs-5 fw-semibold">+ Створити тему</a>
+            {% endif %}
+        </div>
+
+        <div class="d-flex flex-column gap-3">
+            {% for topic in topics %}
+                <a href="{% url 'forum_detail' topic.pk %}" class="list-group-item list-group-item-action p-4 rounded-3 shadow-sm topic-card bg-light">
+                    <h3 class="fw-bold mb-2 fs-4" style="color: #4f46e5;">{{ topic.title }}</h3>
+                    <p class="text-secondary mb-3 fs-5">{{ topic.description|default:"Без опису" }}</p>
+                    <div class="text-muted fs-6 d-flex gap-3">
+                        <span class="badge bg-primary-subtle text-primary px-3 py-2 fs-6">👤 {{ topic.created_by.username }}</span>
+                        <span class="badge bg-secondary-subtle text-secondary px-3 py-2 fs-6">📅 {{ topic.created_at|date:"d.m.Y H:i" }}</span>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="alert alert-info text-center border-0 p-5 fs-4 rounded-3 shadow-sm">Тем поки немає. Створіть першу!</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
